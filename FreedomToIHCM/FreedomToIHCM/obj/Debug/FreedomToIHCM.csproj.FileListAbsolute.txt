@@ -1,0 +1,14 @@
+S:\Projects\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.exe.config
+S:\Projects\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.exe
+S:\Projects\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.pdb
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.csprojResolveAssemblyReference.cache
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\MainWindow.g.cs
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\App.g.cs
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM_MarkupCompile.cache
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM_MarkupCompile.lref
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\MainWindow.baml
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.g.resources
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.Properties.Resources.resources
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.csproj.GenerateResource.Cache
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.exe
+S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.pdb

@@ -1,0 +1,53 @@
+﻿<Window x:Class="FreedomToIHCM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FreedomToIHCM"
+        mc:Ignorable="d"
+        Title="ADP" Height="550" Width="625" ResizeMode="NoResize">
+    <StackPanel Margin="20 0 20 5">
+        <Label Content="Freedom to iHCM" FontFamily="Lucida Sans Typewriter" FontWeight="Bold" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Separator></Separator>
+        <StackPanel Margin="0 10 0 5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Server : "></Label>
+            <TextBox HorizontalAlignment="Stretch" Width="200" MaxLength="60" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        </StackPanel>
+        <Grid x:Name="EntireGrid" Margin="0 10 0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <!-- For Table-->
+                <ColumnDefinition Width="*"/>
+                <!-- For Add and Start  -->
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400"/>
+            </Grid.RowDefinitions>
+            <DataGrid VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" x:Name="dataGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0 10 0 5" Grid.Row="0" Grid.Column="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="S.No" Width="3*" Binding="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" >
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="From Freedom" Width="10*" Binding="{Binding FromDatabase}">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="To iHCM" Width="10*" Binding="{Binding ToDatabase}">
+                    </DataGridTextColumn>
+                    <!--<DataGridHyperlinkColumn Width="5*" Hyperlink.Click="DataGridHyperlinkColumn_Click" IsReadOnly="True" Binding="{Binding Remove}">
+                    </DataGridHyperlinkColumn>-->
+                    <DataGridTemplateColumn Width="5*" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="removeRow" Content="Remove"> </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Status" Width="5*" Binding="{Binding Status}" IsReadOnly="True">
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="0" Grid.Column="1"  VerticalAlignment="Top">
+                <Button Margin="10 50 10 5" Content="Add" Click="addRow" Command="{Binding AddCommand}"/>
+                <Button Margin="10 5 10 5" Content="Start" Click="startProcess" Command="{Binding StartCommand}"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Window>
