@@ -1,0 +1,6 @@
+S:\Projects\DatabaseMetadata\DatabaseMetadata\bin\Debug\DatabaseMetadata.exe.config
+S:\Projects\DatabaseMetadata\DatabaseMetadata\bin\Debug\DatabaseMetadata.exe
+S:\Projects\DatabaseMetadata\DatabaseMetadata\bin\Debug\DatabaseMetadata.pdb
+S:\Projects\DatabaseMetadata\DatabaseMetadata\obj\Debug\DatabaseMetadata.csprojResolveAssemblyReference.cache
+S:\Projects\DatabaseMetadata\DatabaseMetadata\obj\Debug\DatabaseMetadata.exe
+S:\Projects\DatabaseMetadata\DatabaseMetadata\obj\Debug\DatabaseMetadata.pdb

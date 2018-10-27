@@ -4,17 +4,17 @@
 
 
 
-;with cte as (
-select AllTables.name, 
-(select name from sys.tables where object_id = Parents.referenced_object_id ) Parent from sys.tables AllTables
-left join sys.foreign_keys Parents
-on AllTables.object_id = Parents.parent_object_id 
+;WITH CTE AS (
+SELECT ALLTABLES.NAME, 
+(SELECT NAME FROM SYS.TABLES WHERE OBJECT_ID = PARENTS.REFERENCED_OBJECT_ID ) PARENT FROM SYS.TABLES ALLTABLES
+LEFT JOIN SYS.FOREIGN_KEYS PARENTS
+ON ALLTABLES.OBJECT_ID = PARENTS.PARENT_OBJECT_ID 
 ) 
-select distinct c1.name 'Table', Parents = STUFF(( SELECT	',' + Parent
-				FROM	cte as c2
-				WHERE c2.name = c1.name
+SELECT DISTINCT C1.NAME 'TABLE', PARENTS = STUFF(( SELECT	',' + PARENT
+				FROM	CTE AS C2
+				WHERE C2.NAME = C1.NAME
 				FOR XML	PATH('')
 				), 1, 1, '')
-from cte c1
+FROM CTE C1
 
 

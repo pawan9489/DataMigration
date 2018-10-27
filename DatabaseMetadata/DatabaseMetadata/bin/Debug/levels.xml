@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tables>
+  <Table order="1" name="Parent1" />
+  <Table order="1" name="Parent2" />
+  <Table order="2" name="Child1" />
+  <Table order="2" name="Child2" />
+  <Table order="3" name="Child3" />
+  <Table order="3" name="Child4" />
+</Tables>
