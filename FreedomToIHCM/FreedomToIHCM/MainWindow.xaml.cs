@@ -15,6 +15,9 @@ namespace FreedomToIHCM
             InitializeComponent();
             ts = FromToTableModel.GetData();
             dataGrid.ItemsSource = ts;
+
+            // Read XML on Load
+            Table.FromXML("S:\\Projects\\DataMigration\\DatabaseMetadata\\DatabaseMetadata\\bin\\Debug\\tableParents.xml");
         }
 
         private void addRow(object sender, RoutedEventArgs e)
@@ -29,7 +32,22 @@ namespace FreedomToIHCM
 
         private void startProcess(object sender, RoutedEventArgs e)
         {
-
+            // Make Sure that all from and To Databases are Filled and then Run the Process
+            var canStartProcess = true;
+            foreach(var row in ts)
+            {
+                if(row.FromDatabase == "" || row.ToDatabase == "")
+                {
+                    canStartProcess = false;
+                }
+            }
+            if(! canStartProcess)
+            {
+                MessageBox.Show("Fill out the Missing Database names in the Table");
+            } else
+            {
+                RunProcess.Run(ts.ToList());
+            }
         }
 
         private void removeRow(object sender, RoutedEventArgs e)

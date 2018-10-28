@@ -12,3 +12,17 @@ S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.Properties.Resou
 S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.csproj.GenerateResource.Cache
 S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.exe
 S:\Projects\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.pdb
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.exe.config
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.exe
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\bin\Debug\FreedomToIHCM.pdb
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.csprojResolveAssemblyReference.cache
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\MainWindow.g.cs
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\App.g.cs
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM_MarkupCompile.cache
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM_MarkupCompile.lref
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\MainWindow.baml
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.g.resources
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.Properties.Resources.resources
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.csproj.GenerateResource.Cache
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.exe
+S:\Projects\DataMigration\FreedomToIHCM\FreedomToIHCM\obj\Debug\FreedomToIHCM.pdb
