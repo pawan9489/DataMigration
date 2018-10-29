@@ -65,6 +65,7 @@ namespace DatabaseMetadata
                             // dbo.OC_TABLEDEFS  |  2  |  dbo.OC_ADMINCONSOLE_FOLDERS,  dbo.OC_TABLEDEFS
                             if (row.Name == parentNames[i])
                             {
+				row.Parents.Add(row);
                                 continue;
                             }
                             for (int j = i + 1; j < parentNames.Count; j++)
@@ -76,6 +77,7 @@ namespace DatabaseMetadata
                                 // dbo.OC_TABLEDEFS  |  2  |  dbo.OC_ADMINCONSOLE_FOLDERS,  dbo.OC_TABLEDEFS
                                 if(row.Name == parentNames[j])
                                 {
+				    row.Parents.Add(map[parentNames[i]]);
                                     continue;
                                 }
                                 continue;
