@@ -36,27 +36,35 @@ namespace DatabaseMetadata
             var temp = Query.eachLine(sql);
             foreach (var dataRow in temp)
             {
+                // Ex: dataRow -> ProductModelProductDescriptionCulture | 	2	| ProductDescription,Culture,ProductModel
                 var row = new Table(dataRow[0].ToString(), (int)dataRow[1], new List<Table>());
-                var parentNames = dataRow[2].ToString().Split(',').ToList();
+                var parentNames = dataRow[2].ToString().Split(',').ToList(); // List (ProductDescription, Culture, ProductModel)
 
                 /*
                     As the SQL takes the data in the order of Level Ascending, No need to verify the Parents(Table Name) exists in the Map
                     and also the Order of Parents is Ascending Order.
                 */
-                if (parentNames[0] != "") // If the Table has no Parents
+                if (parentNames[0] != "") // If the Table has Parents
                 {
-                    if(parentNames.Count == 1) // Only One parent
+                    if (parentNames.Count == 1) // Only One parent
                     {
-                        row.Parents.Add(map[parentNames[0]]);
-                    } else
+                        row.Parents.Add(map[parentNames[0]]); // Map will have the parent since the SQL qurey results are in the order of Levels
+                    }
+                    else // Multiple Parents
                     {
                         for (int i = 0; i < parentNames.Count; i++)
                         {
                             for (int j = i + 1; j < parentNames.Count; j++)
                             {
+                                ///
+                                /// In List of Parents (Sorted by their Levels) if the parents in the starting are dependent on the later then remove the later
+                                ///
                                 if (map[parentNames[i]].Dependent(map[parentNames[j]]))
                                 {
-                                    if (!row.Parents.Contains(map[parentNames[i]]))
+                                    ///
+                                    /// Checking for Duplications of parents since the SQL query has duplicate parents because of Multiple same parent keys in the table (like Sales Table with "Shipping Address" and "Departure Address")
+                                    ///
+                                    if (!(row.Parents.Contains(map[parentNames[i]])))
                                     {
                                         row.Parents.Add(map[parentNames[i]]);
                                     }
@@ -64,7 +72,17 @@ namespace DatabaseMetadata
                                 }
                                 else
                                 {
-                                    row.Parents.Add(map[parentNames[i]]);
+                                    ///
+                                    /// Checking for Duplications of parents since the SQL query has duplicate parents because of Multiple same parent keys in the table (like Sales Table with "Shipping Address" and "Departure Address")
+                                    ///
+                                    if (!(row.Parents.Contains(map[parentNames[i]])))
+                                    {
+                                        row.Parents.Add(map[parentNames[i]]);
+                                    }
+                                    if (!(row.Parents.Contains(map[parentNames[j]])))
+                                    {
+                                        row.Parents.Add(map[parentNames[j]]);
+                                    }
                                 }
                             }
                         }
