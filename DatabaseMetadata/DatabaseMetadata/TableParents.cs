@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -13,23 +13,30 @@ namespace DatabaseMetadata
                 INSERT INTO #SEQUENCE
                 EXEC SP_MSDEPENDENCIES @INTRANS = 1 ,@OBJTYPE=3
 
-
-                ;WITH CTE AS (
-                SELECT ALLTABLES.NAME, 
-                (SELECT NAME FROM SYS.TABLES WHERE OBJECT_ID = PARENTS.REFERENCED_OBJECT_ID ) PARENT FROM SYS.TABLES ALLTABLES
+                CREATE TABLE #NAMEPARENT ([NAME] NVARCHAR(256), [PARENT] NVARCHAR(256));
+                INSERT INTO #NAMEPARENT
+                SELECT T.TABLE_SCHEMA + '.' + ALLTABLES.NAME 'NAME', 
+                (SELECT T.TABLE_SCHEMA + '.' + NAME FROM SYS.TABLES S
+                INNER JOIN INFORMATION_SCHEMA.TABLES T ON T.TABLE_NAME = S.NAME
+                WHERE OBJECT_ID = PARENTS.REFERENCED_OBJECT_ID 
+                ) PARENT FROM SYS.TABLES ALLTABLES
                 LEFT JOIN SYS.FOREIGN_KEYS PARENTS
                 ON ALLTABLES.OBJECT_ID = PARENTS.PARENT_OBJECT_ID 
-                ) 
-                ,TABLEPARENTS AS (
+                INNER JOIN INFORMATION_SCHEMA.TABLES T ON T.TABLE_NAME = ALLTABLES.NAME
+
+
+                CREATE TABLE #NAMEPARENTS ([NAME] NVARCHAR(256), [PARENTS] NVARCHAR(4000));
+                INSERT INTO #NAMEPARENTS
                 SELECT DISTINCT C1.NAME, PARENTS = STUFF(( SELECT	',' + PARENT
-				                FROM	CTE AS C2
+				                FROM	#NAMEPARENT AS C2
 				                WHERE C2.NAME = C1.NAME
 				                FOR XML	PATH('')
 				                ), 1, 1, '')
-                FROM CTE C1
-                )
+                FROM #NAMEPARENT C1
+
                 SELECT TP.NAME,LO.LEVEL, TP.PARENTS 
-                FROM #SEQUENCE LO INNER JOIN TABLEPARENTS TP ON TP.NAME = LO.NAME";
+                FROM #SEQUENCE LO INNER JOIN #NAMEPARENTS TP ON TP.NAME = LO.OWNER + '.' + LO.NAME
+                ORDER BY LO.LEVEL";
 
         public static void populate()
         {
@@ -54,11 +61,24 @@ namespace DatabaseMetadata
                     {
                         for (int i = 0; i < parentNames.Count; i++)
                         {
+                            // Some times the table might refer to itself
+                            // dbo.OC_TABLEDEFS  |  2  |  dbo.OC_ADMINCONSOLE_FOLDERS,  dbo.OC_TABLEDEFS
+                            if (row.Name == parentNames[i])
+                            {
+                                continue;
+                            }
                             for (int j = i + 1; j < parentNames.Count; j++)
                             {
                                 ///
                                 /// In List of Parents (Sorted by their Levels) if the parents in the starting are dependent on the later then remove the later
                                 ///
+                                // Some times the table might refer to itself
+                                // dbo.OC_TABLEDEFS  |  2  |  dbo.OC_ADMINCONSOLE_FOLDERS,  dbo.OC_TABLEDEFS
+                                if(row.Name == parentNames[j])
+                                {
+                                    continue;
+                                }
+                                continue;
                                 if (map[parentNames[i]].Dependent(map[parentNames[j]]))
                                 {
                                     ///
@@ -88,7 +108,10 @@ namespace DatabaseMetadata
                         }
                     }
                 }
-                map.Add(row.Name, row);
+                if (!(map.ContainsKey(row.Name)))
+                {
+                    map.Add(row.Name, row);
+                }
             }
         }
 
