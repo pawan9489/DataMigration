@@ -1,17 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tables>
-  <Table name="Parent1" order="1" />
-  <Table name="Parent2" order="1" />
-  <Table name="Child1" order="2">
-    <Parent name="Parent1" />
+  <Table name="Person.AddressType" order="1" />
+  <Table name="dbo.AWBuildVersion" order="1" />
+  <Table name="Person.BusinessEntity" order="1" />
+  <Table name="Person.ContactType" order="1" />
+  <Table name="dbo.countries" order="1" />
+  <Table name="Person.CountryRegion" order="1" />
+  <Table name="Sales.CreditCard" order="1" />
+  <Table name="Production.Culture" order="1" />
+  <Table name="Sales.Currency" order="1" />
+  <Table name="Sales.CustomerPII" order="1" />
+  <Table name="dbo.DatabaseLog" order="1" />
+  <Table name="Demo.DemoSalesOrderDetailSeed" order="1" />
+  <Table name="Demo.DemoSalesOrderHeaderSeed" order="1" />
+  <Table name="HumanResources.Department" order="1" />
+  <Table name="HumanResources.Employee_Temporal" order="1" />
+  <Table name="HumanResources.Employee_Temporal_History" order="1" />
+  <Table name="dbo.ErrorLog" order="1" />
+  <Table name="Production.Illustration" order="1" />
+  <Table name="Production.Location" order="1" />
+  <Table name="Sales.OrderTracking" order="1" />
+  <Table name="Person.Person_json" order="1" />
+  <Table name="Person.Person_Temporal" order="1" />
+  <Table name="Person.Person_Temporal_History" order="1" />
+  <Table name="Person.PhoneNumberType" order="1" />
+  <Table name="Production.Product_inmem" order="1" />
+  <Table name="Production.Product_ondisk" order="1" />
+  <Table name="Production.ProductCategory" order="1" />
+  <Table name="Production.ProductDescription" order="1" />
+  <Table name="Production.ProductModel" order="1" />
+  <Table name="Production.ProductPhoto" order="1" />
+  <Table name="Sales.SalesOrder_json" order="1" />
+  <Table name="Sales.SalesOrderHeader_inmem" order="1" />
+  <Table name="Sales.SalesOrderHeader_ondisk" order="1" />
+  <Table name="Sales.SalesReason" order="1" />
+  <Table name="Production.ScrapReason" order="1" />
+  <Table name="HumanResources.Shift" order="1" />
+  <Table name="Purchasing.ShipMethod" order="1" />
+  <Table name="Sales.SpecialOffer" order="1" />
+  <Table name="Sales.SpecialOffer_inmem" order="1" />
+  <Table name="Sales.SpecialOffer_ondisk" order="1" />
+  <Table name="dbo.Test" order="1" />
+  <Table name="Sales.TrackingEvent" order="1" />
+  <Table name="Production.TransactionHistoryArchive" order="1" />
+  <Table name="Production.UnitMeasure" order="1" />
+  <Table name="Sales.CountryRegionCurrency" order="2">
+    <Parent name="Person.CountryRegion" />
+    <Parent name="Sales.Currency" />
   </Table>
-  <Table name="Child2" order="2">
-    <Parent name="Parent1" />
+  <Table name="Sales.CurrencyRate" order="2">
+    <Parent name="Sales.Currency" />
   </Table>
-  <Table name="Child3" order="3">
-    <Parent name="Child1" />
+  <Table name="Person.Person" order="2">
+    <Parent name="Person.BusinessEntity" />
   </Table>
-  <Table name="Child4" order="3">
-    <Parent name="Child1" />
+  <Table name="Production.ProductModelIllustration" order="2">
+    <Parent name="Production.ProductModel" />
+    <Parent name="Production.Illustration" />
+  </Table>
+  <Table name="Production.ProductModelProductDescriptionCulture" order="2">
+    <Parent name="Production.ProductDescription" />
+    <Parent name="Production.Culture" />
+    <Parent name="Production.ProductModel" />
+  </Table>
+  <Table name="Production.ProductSubcategory" order="2">
+    <Parent name="Production.ProductCategory" />
+  </Table>
+  <Table name="Sales.SalesTerritory" order="2">
+    <Parent name="Person.CountryRegion" />
+  </Table>
+  <Table name="Sales.SpecialOfferProduct_inmem" order="2">
+    <Parent name="Production.Product_inmem" />
+    <Parent name="Sales.SpecialOffer_inmem" />
+  </Table>
+  <Table name="Sales.SpecialOfferProduct_ondisk" order="2">
+    <Parent name="Production.Product_ondisk" />
+    <Parent name="Sales.SpecialOffer_ondisk" />
+  </Table>
+  <Table name="Purchasing.Vendor" order="2">
+    <Parent name="Person.BusinessEntity" />
+  </Table>
+  <Table name="Person.BusinessEntityContact" order="3">
+    <Parent name="Person.Person" />
+    <Parent name="Person.ContactType" />
+  </Table>
+  <Table name="Person.EmailAddress" order="3">
+    <Parent name="Person.Person" />
+  </Table>
+  <Table name="HumanResources.Employee" order="3">
+    <Parent name="Person.Person" />
+  </Table>
+  <Table name="Person.Password" order="3">
+    <Parent name="Person.Person" />
+  </Table>
+  <Table name="Sales.PersonCreditCard" order="3">
+    <Parent name="Person.Person" />
+    <Parent name="Sales.CreditCard" />
+  </Table>
+  <Table name="Person.PersonPhone" order="3">
+    <Parent name="Person.Person" />
+    <Parent name="Person.PhoneNumberType" />
+  </Table>
+  <Table name="Production.Product" order="3">
+    <Parent name="Production.UnitMeasure" />
+    <Parent name="Production.ProductModel" />
+    <Parent name="Production.ProductSubcategory" />
+  </Table>
+  <Table name="Sales.SalesOrderDetail_inmem" order="3">
+    <Parent name="Sales.SalesOrderHeader_inmem" />
+    <Parent name="Sales.SpecialOfferProduct_inmem" />
+  </Table>
+  <Table name="Sales.SalesOrderDetail_ondisk" order="3">
+    <Parent name="Sales.SalesOrderHeader_ondisk" />
+    <Parent name="Sales.SpecialOfferProduct_ondisk" />
+  </Table>
+  <Table name="Person.StateProvince" order="3">
+    <Parent name="Person.CountryRegion" />
+    <Parent name="Sales.SalesTerritory" />
+  </Table>
+  <Table name="Person.Address" order="4">
+    <Parent name="Person.StateProvince" />
+  </Table>
+  <Table name="Production.BillOfMaterials" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Production.Document" order="4">
+    <Parent name="HumanResources.Employee" />
+  </Table>
+  <Table name="HumanResources.EmployeeDepartmentHistory" order="4">
+    <Parent name="HumanResources.Department" />
+    <Parent name="HumanResources.Employee" />
+    <Parent name="HumanResources.Shift" />
+  </Table>
+  <Table name="HumanResources.EmployeePayHistory" order="4">
+    <Parent name="HumanResources.Employee" />
+  </Table>
+  <Table name="HumanResources.JobCandidate" order="4">
+    <Parent name="HumanResources.Employee" />
+  </Table>
+  <Table name="Production.ProductCostHistory" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Production.ProductInventory" order="4">
+    <Parent name="Production.Location" />
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Production.ProductListPriceHistory" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Production.ProductProductPhoto" order="4">
+    <Parent name="Production.Product" />
+    <Parent name="Production.ProductPhoto" />
+  </Table>
+  <Table name="Production.ProductReview" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Purchasing.ProductVendor" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Purchasing.PurchaseOrderHeader" order="4">
+    <Parent name="HumanResources.Employee" />
+    <Parent name="Purchasing.Vendor" />
+    <Parent name="Purchasing.ShipMethod" />
+  </Table>
+  <Table name="Sales.SalesPerson" order="4">
+    <Parent name="HumanResources.Employee" />
+    <Parent name="Sales.SalesTerritory" />
+  </Table>
+  <Table name="Sales.SalesTaxRate" order="4">
+    <Parent name="Person.StateProvince" />
+  </Table>
+  <Table name="Sales.ShoppingCartItem" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Sales.SpecialOfferProduct" order="4">
+    <Parent name="Production.Product" />
+    <Parent name="Sales.SpecialOffer" />
+  </Table>
+  <Table name="Production.TransactionHistory" order="4">
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Production.WorkOrder" order="4">
+    <Parent name="Production.Product" />
+    <Parent name="Production.ScrapReason" />
+  </Table>
+  <Table name="Person.BusinessEntityAddress" order="5">
+    <Parent name="Person.Address" />
+    <Parent name="Person.AddressType" />
+    <Parent name="Person.BusinessEntity" />
+  </Table>
+  <Table name="Production.ProductDocument" order="5">
+    <Parent name="Production.Document" />
+    <Parent name="Production.Product" />
+  </Table>
+  <Table name="Purchasing.PurchaseOrderDetail" order="5">
+    <Parent name="Production.Product" />
+    <Parent name="Purchasing.PurchaseOrderHeader" />
+  </Table>
+  <Table name="Sales.SalesPersonQuotaHistory" order="5">
+    <Parent name="Sales.SalesPerson" />
+  </Table>
+  <Table name="Sales.SalesTerritoryHistory" order="5">
+    <Parent name="Sales.SalesPerson" />
+  </Table>
+  <Table name="Sales.Store" order="5">
+    <Parent name="Person.BusinessEntity" />
+    <Parent name="Sales.SalesPerson" />
+  </Table>
+  <Table name="Production.WorkOrderRouting" order="5">
+    <Parent name="Production.Location" />
+    <Parent name="Production.WorkOrder" />
+  </Table>
+  <Table name="Sales.Customer" order="6">
+    <Parent name="Person.Person" />
+    <Parent name="Sales.Store" />
+    <Parent name="Sales.SalesTerritory" />
+  </Table>
+  <Table name="Sales.SalesOrderHeader" order="7">
+    <Parent name="Person.Address" />
+    <Parent name="Sales.CreditCard" />
+    <Parent name="Sales.CurrencyRate" />
+    <Parent name="Sales.Customer" />
+    <Parent name="Sales.SalesPerson" />
+    <Parent name="Purchasing.ShipMethod" />
+    <Parent name="Sales.SalesTerritory" />
+  </Table>
+  <Table name="Sales.SalesOrderDetail" order="8">
+    <Parent name="Sales.SalesOrderHeader" />
+    <Parent name="Sales.SpecialOfferProduct" />
+  </Table>
+  <Table name="Sales.SalesOrderHeaderSalesReason" order="8">
+    <Parent name="Sales.SalesReason" />
+    <Parent name="Sales.SalesOrderHeader" />
   </Table>
 </Tables>

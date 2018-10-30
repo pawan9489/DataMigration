@@ -80,7 +80,6 @@ namespace DatabaseMetadata
 				                    row.Parents.Add(map[parentNames[i]]);
                                     continue;
                                 }
-                                continue;
                                 if (map[parentNames[i]].Dependent(map[parentNames[j]]))
                                 {
                                     ///

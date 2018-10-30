@@ -6,7 +6,7 @@ namespace DatabaseMetadata
 {
     class Query
     {
-        static string connectionString = @"Data Source=PAWAN-DESKTOP;Initial Catalog=Test;User ID=sa;Password=test123";
+        static string connectionString = @"Data Source=PAWAN-DESKTOP;Initial Catalog=AdventureWorks2016CTP3;User ID=sa;Password=test123";
 
         static SqlConnection dbConnection(string connectionString)
         {
